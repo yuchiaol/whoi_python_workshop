@@ -72,6 +72,7 @@ def main(inargs):
 
     if inargs.mask:
         sftlf_file, realm = inargs.mask
+        assert realm in ['land', 'ocean']
         sftlf_cube = iris.load_cube(sftlf_file, 'land_area_fraction')
         clim = apply_mask(clim, sftlf_cube, realm)
 

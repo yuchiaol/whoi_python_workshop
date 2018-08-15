@@ -12,6 +12,8 @@ import cmocean
 import warnings
 warnings.filterwarnings('ignore')
 
+import cmdline_provenance as cmdprov
+
 
 def apply_mask(pr_cube, sftlf_cube, realm):
     """Mask ocean using a sftlf (land surface fraction) file."""
@@ -78,6 +80,10 @@ def main(inargs):
 
     plot_data(clim, inargs.month, gridlines=inargs.gridlines, levels=inargs.cbar_levels)
     plt.savefig(inargs.outfile)   
+
+    new_log = cmdprov.new_log(infile_history={inargs.infile: cube.attributes['history']})
+    fname, extension = inargs.outfile.split('.')
+    cmdprov.write_log(fname+'.txt', new_log)
 
 
 if __name__ == '__main__':

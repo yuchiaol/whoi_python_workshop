@@ -1,3 +1,18 @@
+import pdb
+import argparse
+import calendar
+
+import numpy
+import matplotlib.pyplot as plt
+import iris
+import iris.plot as iplt
+import iris.coord_categorisation
+import cmocean
+
+import warnings
+warnings.filterwarnings('ignore')
+
+
 def read_data(pr_file, month):
     """ Read precipitation nc-file """
 
@@ -31,22 +46,6 @@ def plot_data(cube, month, gridlines=False, levels=None):
    
     title = '%s precipitation climatology (%s)' %(cube.attributes['model_id'], month)
     plt.title(title)
-
-
-import iris
-import matplotlib.pyplot as plt
-import iris.plot as iplt
-import iris.coord_categorisation
-import cmocean
-import numpy
-import argparse
-
-import warnings
-warnings.filterwarnings('ignore')
-
-import pdb
-
-import calendar
 
 #help(plot_pr_climatology)
 
